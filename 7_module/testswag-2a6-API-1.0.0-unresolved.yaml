@@ -1,0 +1,412 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/testswag-2a6/API/1.0.0
+  - description: 'Модуль 7: Проектирование API (REST и OpenAPI)'
+    url: 'https://module7/api/v1/'
+info:
+  description: 'Задача (Проектирование): Спроектировать (написать в YAML или через Swagger Editor) OpenAPI-спецификацию для CRUD-операций над ресурсом Book.'
+  version: 1.0.0
+  title: CRUD сервиса Book
+paths:
+  /books:
+    get:
+      summary: Получение книг
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    author:
+                      type: string
+                    year_of_release:
+                      type: integer
+                    rating:
+                      type: integer
+                x-examples:
+                  Example 1:
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+              examples:
+                Список книг:
+                  value:
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                    - id: 123
+                      name: Сказки
+                      description: книга для детей
+                      author: Пушкин
+                      year_of_release: 1820
+                      rating: 5
+                Нет книг:
+                  value: []
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 400
+                    message: The request parameters are incorrect
+              examples:
+                Ошибка:
+                  value:
+                    status: 400
+                    message: The request parameters are incorrect
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 404
+                    message: This method was not found
+              examples:
+                Ошибка:
+                  value:
+                    status: 404
+                    message: This method was not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 500
+                    message: Server error
+              examples:
+                Ошибка:
+                  value:
+                    status: 500
+                    message: Server error
+      operationId: get-books
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: title
+          description: Cортировка по названию книги
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Лимит книг
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: Страница
+    post:
+      summary: Создание книги
+      tags: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    id: 70
+              examples:
+                Успешное создание:
+                  value:
+                    id: 70
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 400
+                    message: Incorrect data entered
+              examples:
+                Некорректные данные:
+                  value:
+                    status: 400
+                    message: Incorrect data entered
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 500
+                    message: Server error
+              examples:
+                Ошибка:
+                  value:
+                    status: 500
+                    message: Server error
+      operationId: post-books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                author_id:
+                  type: integer
+                year_of_release:
+                  type: integer
+                description:
+                  type: string
+              x-examples:
+                Example 1:
+                  name: Сказки
+                  author_id: 3
+                  year_of_release: 1820
+                  description: Сказки для детей
+            examples:
+              Создание книги:
+                value:
+                  name: Сказки
+                  author_id: 3
+                  year_of_release: 1820
+                  description: Сказки для детей
+  '/books/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Получение одной книги
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  author:
+                    type: string
+                  year_of_release:
+                    type: integer
+                  rating:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    id: 123
+                    name: Сказки
+                    description: книга для детей
+                    author: Пушкин
+                    year_of_release: 1820
+                    rating: 5
+              examples:
+                Успех:
+                  value:
+                    id: 123
+                    name: Сказки
+                    description: книга для детей
+                    author: Пушкин
+                    year_of_release: 1820
+                    rating: 5
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 404
+                    message: A book with this id was not found
+              examples:
+                Книга не найдена:
+                  value:
+                    status: 404
+                    message: A book with this id was not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 500
+                    message: Server error
+              examples:
+                Ошибка:
+                  value:
+                    status: 500
+                    message: Server error
+      operationId: get-books-id
+    delete:
+      summary: Удалить одну книгу
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    id: 60
+              examples:
+                Успех:
+                  value:
+                    id: 60
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 400
+                    message: The book being deleted was not found
+              examples:
+                Книга не найдена:
+                  value:
+                    status: 400
+                    message: The book being deleted was not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    status: 500
+                    message: Server error
+              examples:
+                Ошибка:
+                  value:
+                    status: 500
+                    message: Server error
+      operationId: delete-books-id
+      requestBody:
+        content: {}
+components:
+  schemas: {}
